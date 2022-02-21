@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
 </head>
 <body>
-    <ul>
-        <li>Strona główna</li>
-        <li>Search</li>
-        <li>Kategorie</li>
-        <li>Zaloguj się</li>
-    </ul>
+    <div class="menu">
+        <div class="menu__logo">
+            <a href="/"><img src="img/logo.png" alt="Kursy"></a>
+        </div>
+        <div class="menu__dropdown">
+            <a href="#"><button class="menu__dropdown__btn">Kategorie &nbsp<div class="arrow arrow--down"></div></button></a>
+            <div class="menu__dropdown__content">
+                <a href="#">HTML</a>
+                <a href="#">JS</a>
+                <a href="#">Python</a>
+            </div>
+        </div>
+        <div class="menu__search">
+            <form>
+                <input type="search" placeholder="Szukaj">
+                
+            </form>
+        </div>
+        <div class="menu__login">
+            <a href="#">
+                <button class="menu__login__btn">Zaloguj się</button>
+            </a>
+            <a href="#">
+                <button class="menu__register__btn">Zarejestruj się</button>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

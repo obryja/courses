@@ -1,12 +1,17 @@
 const router = require('express').Router()
 
-const favicon = 'img/icon.png'
+const favicon = 
 
 router.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Kursy',
-        favicon: favicon
-    })
+    res.render('index', {title: 'Kursy'})
+})
+
+router.get('/course', (req, res) => {
+    res.render('course', {title: 'Kurs'})
+})
+
+router.get('/coursesByCategory', (req, res) => {
+    res.render('coursesByCategory', {title: 'Kursy według kategorii'})
 })
 
 module.exports = router
