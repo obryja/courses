@@ -1,7 +1,9 @@
 const app = require('./loaders/express')
 const mainRouter = require('./routers/mainRoutes')
+const adminRouter = require('./routers/adminRoutes')
 
 app.use(mainRouter)
+app.use(adminRouter)
 
 /* errors */
 

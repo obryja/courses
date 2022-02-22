@@ -1,7 +1,5 @@
 const router = require('express').Router()
 
-const favicon = 
-
 router.get('/', (req, res) => {
     res.render('index', {title: 'Kursy'})
 })
