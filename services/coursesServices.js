@@ -1,8 +1,20 @@
 const Course = require('../db/schemas').Course
 
-/* getting data */
+/** @sends : all saved courses from database */
 
-/* adding data */
+getAllCourses = async (req, res) => {
+    try{
+        res.status(202).send(JSON.stringify(
+            await Course.find().lean()
+        ))
+    } catch(err){
+        res.sendStatus(500)
+        console.log(err)
+    }
+}
+
+
+/** adding data */
 
 addCourse = async(req, res) => {
     try{
@@ -30,4 +42,5 @@ addCourse = async(req, res) => {
 
 module.exports = {
     addCourse,
+    getAllCourses,
 }

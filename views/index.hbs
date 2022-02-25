@@ -5,5 +5,22 @@
 </head>
 <body>
     {{> nav}}
+    <div class="main">
+        <div class="courses">
+            <h1>Polecane kursy</h1>
+            <div class="courses__list">
+
+            </div>
+            <script>
+                var courses = document.getElementsByClassName('courses__list')[0];
+                dataFetch("get_all_courses")
+                    .then(data => {
+                        for(i = 0; i < data.length; i++){
+                            courses.innerHTML += "<a href='#'><div class='courses__list__item'><img src='" + data[i].img + "' alt='zdjęcie kursu'><h3>" + data[i].name + "</h3></div></a>";
+                        }
+                    })
+            </script>
+        </div>
+    </div>
 </body>
 </html> 

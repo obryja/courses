@@ -1,3 +1,4 @@
+const { ObjectId } = require("bson")
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
@@ -13,6 +14,8 @@ const courseSchema = new Schema({
     versionKey: false
 })
 
-const Course = new.mongoose.model('Course', courseSchema)
+const Course = new mongoose.model('Course', courseSchema)
 
-module.exports = Course
+module.exports = {
+    Course,
+}
