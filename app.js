@@ -8,7 +8,7 @@ app.use(mainRouter)
 app.use(dataRouter)
 app.use(adminRouter)
 
-/* errors */
+/*************** errors ***************/
 
 app.use((req, res) => {
     res.status(404).render('errors/404', {title: '404'})

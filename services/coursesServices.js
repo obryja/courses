@@ -1,6 +1,6 @@
 const Course = require('../db/schemas').Course
 
-/** @sends : all saved courses from database */
+/***** all saved courses from database *****/
 
 getAllCourses = async (req, res) => {
     try{
@@ -14,7 +14,7 @@ getAllCourses = async (req, res) => {
 }
 
 
-/** adding data */
+/*************** adding data ***************/
 
 addCourse = async(req, res) => {
     try{

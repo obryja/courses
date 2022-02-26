@@ -1,8 +1,9 @@
-/** fetch function 
+/*************** fetch function ***************
  * @returns: fetched data
  * @url : endpoint to which request will be send
  * @data : data that will be put into body of request
- * @method : HTTP method, POST is default */ 
+ * @method : HTTP method, POST is default 
+ * **********************************************/ 
 
  dataFetch = (url, data={}, method="POST") => {
     return fetch(url, {
