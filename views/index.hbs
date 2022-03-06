@@ -7,7 +7,7 @@
     {{> nav}}
     <div class="main">
         <div class="courses">
-            <h1>Polecane kursy</h1>
+            <h1>Nasze kursy</h1>
             <div class="courses__list">
 
             </div>
@@ -16,7 +16,7 @@
                 dataFetch("get_all_courses")
                     .then(data => {
                         for(i = 0; i < data.length; i++){
-                            courses.innerHTML += "<a href='#'><div class='courses__list__item'><img src='" + data[i].img + "' alt='zdjęcie kursu'><h3>" + data[i].name + "</h3></div></a>";
+                            courses.innerHTML += "<a href='/course/" + i + "'><div class='courses__list__item'><img src='" + data[i].img + "' alt='zdjęcie kursu'><h3>" + data[i].name + "</h3></div></a>";
                         }
                     })
             </script>
