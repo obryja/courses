@@ -4,12 +4,12 @@ router.get('/', (req, res) => {
     res.render('index', {title: 'Kursy'})
 })
 
-router.get('/course/:courseIndex', (req, res) => {
-    res.render('course', {title: 'Kurs', courseIndex: req.params.courseIndex})
+router.get('/course/:courseId', (req, res) => {
+    res.render('course', {title: 'Kurs', courseId: req.params.courseId})
 })
 
-router.get('/coursesByCategory', (req, res) => {
-    res.render('coursesByCategory', {title: 'Kursy według kategorii'})
+router.get('/coursesByCategory/:category', (req, res) => {
+    res.render('coursesByCategory', {title: 'Kursy według kategorii', category: req.params.category})
 })
 
 module.exports = router

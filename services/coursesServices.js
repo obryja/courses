@@ -1,3 +1,5 @@
+const async = require('hbs/lib/async')
+
 const Course = require('../db/schemas').Course
 
 /***** all saved courses from database *****/
@@ -13,6 +15,45 @@ getAllCourses = async (req, res) => {
     }
 }
 
+/********* get course by given @id *********/
+getCourse = async (req, res) => {
+    try {
+        if(!req.body.id)  return res.sendStatus(400)
+
+        res.status(202).send(JSON.stringify(
+            await Course.findById(req.body.id).lean()
+        ))
+    } catch(err) {
+        res.sendStatus(500)
+        console.log(err) 
+    }
+}
+
+/******** select distinct categries ********/
+
+getCategories = async (req, res) => {
+    try{
+        res.status(202).send(JSON.stringify(
+            await Course.distinct('category').lean()
+        ))
+    }catch(err){
+        res.sendStatus(500)
+        console.log(err)
+    }
+}
+
+/****** get courses by given @category ******/
+
+getCoursesByCategory = async (req, res) => {
+    try{
+        res.status(202).send(JSON.stringify(
+            await Course.find({category: req.body.category}).lean()
+        ))
+    } catch(err){
+        res.sendStatus(500)
+        console.log(err)
+    }
+}
 
 /*************** adding data ***************/
 
@@ -43,4 +84,7 @@ addCourse = async(req, res) => {
 module.exports = {
     addCourse,
     getAllCourses,
+    getCourse,
+    getCategories,
+    getCoursesByCategory,
 }

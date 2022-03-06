@@ -27,18 +27,16 @@
                 var length = document.getElementsByClassName('course__purchase__length')[0];
                 var price = document.getElementsByClassName('course__purchase__price')[0];
 
-                dataFetch("/get_all_courses")
+                dataFetch("/get_course", { "id": "{{ courseId }}" })
                     .then(data => {
-                        list = data;
-                        listLen = list.length - 1;
-                        index = {{ courseIndex }};
 
-                    category.innerHTML += list[index].category;
-                    courseName.innerHTML = list[index].name;
-                    description.innerHTML = list[index].description;
-                    img.src = "" + list[index].img + "";
-                    length.innerHTML = "Długość kursu: <span>" + list[index].length + " h</span>";
-                    price.innerHTML = "Cena kursu: <span>" + list[index].price + " zł</span>";
+                    category.innerHTML += data.category;
+                    category.href = "/coursesByCategory/" + data.category + "";
+                    courseName.innerHTML = data.name;
+                    description.innerHTML = data.description;
+                    img.src = "" + data.img + "";
+                    length.innerHTML = "Długość kursu: <span>" + data.length + " h</span>";
+                    price.innerHTML = "Cena kursu: <span>" + data.price + " zł</span>";
                     })
             </script>
         </div>

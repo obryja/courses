@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/nav.css">
+    <script src="/js/utils.js"></script>
 </head>
 <body>
     <div class="menu">
@@ -14,9 +15,16 @@
         <div class="menu__dropdown">
             <a href="#"><button class="menu__dropdown__btn">Kategorie &nbsp<div class="arrow arrow--down"></div></button></a>
             <div class="menu__dropdown__content">
-                <a href="#">HTML</a>
-                <a href="#">JS</a>
-                <a href="#">Python</a>
+                <script>
+                    var menu = document.getElementsByClassName('menu__dropdown__content')[0];
+
+                    dataFetch('/get_categories')
+                        .then(data => {
+                            for(i = 0; i < data.length; i++){
+                            menu.innerHTML += "<a href='/coursesByCategory/" + data[i] + "'>" + data[i] + "</a>";
+                        }
+                        })
+                </script>
             </div>
         </div>
         <div class="menu__search">
