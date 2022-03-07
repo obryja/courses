@@ -28,4 +28,10 @@ router.post('/get_categories', coursesServices.getCategories)
  * *******************************************/
 router.post('/get_courses_by_category', coursesServices.getCoursesByCategory)
 
+/******************* search *******************
+ * req.body:
+ * @search : search
+ * *******************************************/
+ router.post('/search', coursesServices.searchCourses)
+
 module.exports = router

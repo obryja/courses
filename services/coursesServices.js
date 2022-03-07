@@ -55,6 +55,20 @@ getCoursesByCategory = async (req, res) => {
     }
 }
 
+/****************** search ******************/
+
+searchCourses = async (req, res) => {
+    try{
+        var keyword = String(req.body.name) 
+        res.status(202).send(JSON.stringify(
+            await Course.find({name: { $regex: '.*' + keyword + '.*', $options: 'i'} }).lean()
+        ))
+    } catch(err){
+        res.sendStatus(500)
+        console.log(err)
+    }
+}
+
 /*************** adding data ***************/
 
 addCourse = async(req, res) => {
@@ -87,4 +101,5 @@ module.exports = {
     getCourse,
     getCategories,
     getCoursesByCategory,
+    searchCourses,
 }

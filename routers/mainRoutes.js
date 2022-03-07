@@ -12,4 +12,8 @@ router.get('/coursesByCategory/:category', (req, res) => {
     res.render('coursesByCategory', {title: 'Kursy według kategorii', category: req.params.category})
 })
 
+router.get('/search', (req, res) => {
+    res.render('search', {title: 'Wyszukiwanie kursów', search: req.query.search})
+})
+
 module.exports = router
