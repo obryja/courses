@@ -16,4 +16,12 @@ router.get('/search', (req, res) => {
     res.render('search', {title: 'Wyszukiwanie kursów', search: req.query.search})
 })
 
+router.get('/login', (req, res) => {
+    res.render('user/login', {title: 'Logowanie'})
+})
+
+router.get('/register', (req, res) => {
+    res.render('user/register', {title: 'Rejestracja'})
+})
+
 module.exports = router
