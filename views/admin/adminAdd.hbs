@@ -7,7 +7,72 @@
 <body>
     {{> nav}}
     <div class="main">
-        
+        <div class="admin">
+             <div class="admin__nav">
+                <a href="/admin/add" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Dodawanie</p>
+                    </div>
+                </a>
+                <a href="/admin/delete" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Usuwanie</p>
+                    </div>
+                </a>
+                <a href="/admin/update" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Modyfikowanie</p>
+                    </div>
+                </a>
+                <script>
+                    document.getElementsByClassName('admin__nav__a')[0].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+                    document.getElementsByClassName('admin__nav__a')[1].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+                    document.getElementsByClassName('admin__nav__a')[0].classList.add("admin__nav__a--active");
+                </script>
+            </div>
+            <div class="admin__content">
+                <form class="admin__content__form" method="post">
+                    <div class="admin__content__form__group">
+                        <label for="name">Nazwa</label>
+                        <input type="text" name="name" class="input" required>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="description">Opis</label>
+                        <textarea name="description" rows="5" class="input"></textarea>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="category">Kategoria</label>
+                        <input list="categories" name="category" class="input" required>
+                        <datalist id="categories">
+                            
+                        </datalist>
+                        <script>
+                            var list = document.getElementById('categories');
+
+                            dataFetch('/get_categories')
+                                .then(data => {
+                                    for(i = 0; i < data.length; i++){
+                                    list.innerHTML += "<option value='" + data[i] + "'></option>";
+                                }
+                                })
+                        </script>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="length">Dlugość kursu w godzinach</label>
+                        <input type="number" name="length" class="input" required>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="price">Cena w zł</label>
+                        <input type="number" name="price" class="input" required>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="img">URL do obrau</label>
+                        <input type="text" name="img" class="input">
+                    </div>
+                    <input type="submit" value="Dodaj kurs" class="btn">
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html> 

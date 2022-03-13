@@ -14,8 +14,29 @@ const courseSchema = new Schema({
     versionKey: false
 })
 
+const userSchema = new Schema({
+    username: {
+        type: String,
+        require: true,
+        unique: true
+    },
+    password: {
+        type: String, 
+        require: true
+    },
+    admin: {
+        type: Boolean,
+        require: true
+    },
+    courses: [{courseId: String}]
+}, {
+    versionKey: false
+})
+
 const Course = new mongoose.model('Course', courseSchema)
+const User = new mongoose.model('User', userSchema)
 
 module.exports = {
     Course,
+    User,
 }

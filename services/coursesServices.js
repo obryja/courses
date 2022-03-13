@@ -82,7 +82,7 @@ addCourse = async(req, res) => {
                 category: req.body.category,
                 length: req.body.length,
                 price: req.body.price,
-                img: req.body.img,  
+                img: req.body.img || "/img/basic.png",  
 
             })
             await course.save()

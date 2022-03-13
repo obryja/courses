@@ -13,7 +13,7 @@
             <a href="/"><img srcset="../img/logo.png, img/logo.png" src="img/logo.png" alt="Kursy"></a>
         </div>
         <div class="menu__dropdown">
-            <a href="#"><button class="menu__dropdown__btn">Kategorie &nbsp<div class="arrow arrow--down"></div></button></a>
+            <a><button class="menu__dropdown__btn">Kategorie &nbsp<div class="arrow arrow--down"></div></button></a>
             <div class="menu__dropdown__content">
                 <script>
                     var menu = document.getElementsByClassName('menu__dropdown__content')[0];
@@ -41,8 +41,11 @@
             </a>
         </div>
         <div class="menu__logged">
-            <a href="/user">
-                <button class="btn menu__logged__btn">Twoje konto</button>
+            <a href="/user/ola">
+                <button class="btn menu__logged__btn--user">Twoje konto</button>
+            </a>
+            <a href="/admin">
+                <button class="btn menu__logged__btn--admin">Panel administratora</button>
             </a>
             <a href="#">
                 <button class="btn menu__logged__btn">Wyloguj się</button>

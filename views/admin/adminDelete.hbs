@@ -6,7 +6,95 @@
 <body>
     {{> nav}}
     <div class="main">
-        
+        <div class="admin">
+             <div class="admin__nav">
+                <a href="/admin/add" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Dodawanie</p>
+                    </div>
+                </a>
+                <a href="/admin/delete" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Usuwanie</p>
+                    </div>
+                </a>
+                <a href="/admin/update" class="admin__nav__a">
+                    <div class="admin__nav__option">
+                        <p>Modyfikowanie</p>
+                    </div>
+                </a>
+                <script>
+                    document.getElementsByClassName('admin__nav__a')[0].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+                    document.getElementsByClassName('admin__nav__a')[1].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+                    document.getElementsByClassName('admin__nav__a')[1].classList.add("admin__nav__a--active");
+                </script>
+            </div>
+            <div class="admin__content">
+                <form class="admin__content__form" method="post">
+                     <div class="admin__content__form__group">
+                        <label for="course">Wybierz kurs do usunięcia</label>
+                        <select name="course" class="toDelete input" onchange="changedSelect()">
+                            <option value="" disabled selected>-- wybierz kurs --</option>
+                        </select>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="name">Nazwa</label>
+                        <input type="text" name="name" class="input" disabled>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="description">Opis</label>
+                        <textarea name="description" rows="5" class="input" disabled></textarea>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="category">Kategoria</label>
+                        <input list="categories" name="category" class="input" disabled>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="length">Dlugość kursu w godzinach</label>
+                        <input type="number" name="length" class="input" disabled>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="price">Cena w zł</label>
+                        <input type="number" name="price" class="input" disabled>
+                    </div>
+                    <div class="admin__content__form__group">
+                        <label for="img">URL do obrau</label>
+                        <input type="text" name="img" class="input" disabled>
+                    </div>
+                    <input type="submit" value="Usuń kurs" class="btn">
+                </form>
+                <script>
+                    var list = document.getElementsByClassName('toDelete')[0];
+                    var nameI = document.getElementsByClassName('input')[2];
+                    var description = document.getElementsByClassName('input')[3];
+                    var category = document.getElementsByClassName('input')[4];
+                    var length = document.getElementsByClassName('input')[5];
+                    var price = document.getElementsByClassName('input')[6];
+                    var img = document.getElementsByClassName('input')[7];
+
+                    dataFetch('/get_all_courses')
+                        .then(data => {
+                            for(i = 0; i < data.length; i++){
+                            list.innerHTML += "<option value='" + data[i]._id + "' class='check'>" + data[i].name +  "</option>";
+                        }
+                        })
+
+                    function changedSelect(){
+                        var option = list.options[list.selectedIndex];
+
+                        dataFetch("/get_course", { "id": "" + option.value + ""})
+                            .then(data => {
+                                nameI.value = data.name;
+                                description.value = data.description;
+                                category.value = data.category;
+                                length.value = data.length;
+                                price.value = data.price;
+                                img.value = data.img;
+                            })
+                    }
+                </script>
+            </div>
+        </div>
     </div>
 </body>
 </html> 
