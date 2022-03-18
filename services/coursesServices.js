@@ -1,5 +1,4 @@
 const async = require('hbs/lib/async')
-
 const Course = require('../db/schemas').Course
 
 /***** all saved courses from database *****/

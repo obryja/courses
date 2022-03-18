@@ -1,0 +1,306 @@
+@import url('http://fonts.cdnfonts.com/css/bahnschrift');
+
+$bg: #FAF9F9;
+$black:black;
+$white: white;
+$gray: #555B6E;
+$dark_gr: #89B0AE;
+$light_gr: #BEE3DB;
+$orange: #FFD6BA;
+
+$font: bahnschrift, sans-serif;
+
+body{
+    background-color: $bg;
+    color: $black;
+    font-family: $font;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 80vw;
+    min-height: 75vh;
+    margin: 5vh 10vw;
+    padding: 0;
+}
+
+.btn{
+    background-color: $white;
+    color: $black;
+    font-family: $font;
+    padding: 1vh 1vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+
+    &:hover{
+        background-color: $light_gr;
+        transition-duration: 0.25s;
+    }
+}
+
+.input{
+    background-color: $white;
+    color: $black;
+    font-family: $font;
+    font-size: 1em;
+    padding: 1vh 1vw;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    &:disabled{
+        opacity: 0.5;
+    }
+}
+
+.arrow{
+    border: solid $black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+
+    &--down{
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+/*************** index ***************/
+
+.courses{
+    margin: 0;
+    padding: 0;
+
+    &__list{
+        height: 30vh;
+        min-height: 250px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        justify-items: center;
+        row-gap: 4vh;
+
+        a{
+            color: $black;
+            text-decoration: none;
+            height: 100%;
+        }
+
+        &__item{
+            height: 100%;
+            width: 14vw;
+            background-color: $white;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            justify-items: center;
+            transition-duration: 0.35s;
+
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+
+            h3{
+                margin: 1vh 0.5vw 1vh 0.5vw;
+                width: 90%;
+                border-bottom: 1px solid $gray;
+            }
+
+            span{
+                font-size: 1.5em;
+                color: $dark_gr;
+                font-weight: bold;
+                margin: 0.75vh 1vw;
+            }
+
+            &:hover{
+                opacity: 0.5;
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+/*************** course ***************/
+
+.course{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+    &__details{
+        font-size: larger;
+
+        &__category{
+            color: $gray;
+            text-decoration: none;
+        }
+
+        &__description{
+            padding-right: 7vw;
+            text-align: justify;
+        }
+
+        hr{
+            margin-right: 7vw;
+        }
+    }
+
+    &__purchase{
+        background-color: $white;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+        text-align: center;
+        min-height: 55vh;
+        max-height: 550px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+
+        img{
+            width: 100%;
+        }
+
+        p{
+            text-align: left;
+            margin: 2vh 1vw;
+            font-size: 1.5em;
+            color: $gray;
+
+            span{
+                color: black;
+            }
+        }
+
+        &__btn{
+            font-size: 1.5em;
+            margin: 1vh 2vw 3vh 2vw;
+        }
+    }
+}
+
+/*********** login & register ***********/
+
+.login{
+    background-color: $white;
+    width: 20vw;
+    margin: 7vh auto;
+    padding: 3vh 3vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    border-radius: 10px;
+
+    &__form{
+        margin-top: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 3vh;
+
+        width: 100%;
+
+        &__group{
+            display: flex;
+            flex-direction: column;
+            row-gap: 1vh;
+            width: 100%;
+
+            &__error{
+                color: red;
+            }
+
+            label{
+                font-size: 1em;
+            }
+        }
+
+        input[type=submit]{
+           width: 100%;
+           margin: 2vh 0;
+           background-color: $light_gr;
+            
+           &:hover{
+               background-color: $dark_gr;
+           }
+        }
+    }
+}
+
+/***************** admin *****************/
+
+.admin{
+    background-color: $white;
+    box-shadow: 8px 8px 8px 0px rgba(0,0,0,0.5);
+    margin: 0 10vw;
+
+    &__nav{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    
+        &__a{
+            text-decoration: none;
+            color: $black;
+            font-size: 2vw;
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+    
+            &:hover{
+                transition: 0.5s;
+                background-color: $dark_gr;
+            }
+    
+            &--active{
+                background-color: $light_gr;
+                border-bottom: none;
+            }
+        }
+    
+        &__option{
+            width: 20vw;
+        }
+    }
+
+    &__content{
+        padding: 5vh 15vw;
+
+        &__form{
+            margin-top: 2vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: 3vh;
+    
+            width: 100%;
+    
+            &__group{
+                display: flex;
+                flex-direction: column;
+                row-gap: 1vh;
+                width: 100%;
+    
+                label{
+                    font-size: 1em;
+                }
+            }
+    
+            input[type=submit]{
+               width: 100%;
+               margin: 2vh 0;
+               background-color: $light_gr;
+                
+               &:hover{
+                   background-color: $dark_gr;
+               }
+            }
+        }
+    }
+}
