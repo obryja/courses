@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="/js/coursesManagment.js" defer></script>
 </head>
 <body>
     {{> nav}}
@@ -30,39 +31,39 @@
                 </script>
             </div>
             <div class="admin__content">
-                <form class="admin__content__form" method="post">
+                <div class="admin__content__form">
                      <div class="admin__content__form__group">
                         <label for="course">Wybierz kurs do usunięcia</label>
-                        <select name="course" class="toDelete input" onchange="changedSelect()">
+                        <select name="course" class="toDelete input" id="choosen" onchange="changedSelect()">
                             <option value="" disabled selected>-- wybierz kurs --</option>
                         </select>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="name">Nazwa</label>
-                        <input type="text" name="name" class="input" disabled>
+                        <input type="text" name="name" class="input" id="name" disabled>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="description">Opis</label>
-                        <textarea name="description" rows="5" class="input" disabled></textarea>
+                        <textarea name="description" rows="5" class="input" id="description" disabled></textarea>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="category">Kategoria</label>
-                        <input list="categories" name="category" class="input" disabled>
+                        <input list="categories" name="category" class="input" id="category" disabled>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="length">Dlugość kursu w godzinach</label>
-                        <input type="number" name="length" class="input" disabled>
+                        <input type="number" name="length" class="input" id="length" disabled>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="price">Cena w zł</label>
-                        <input type="number" name="price" class="input" disabled>
+                        <input type="number" name="price" class="input" id="price" disabled>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="img">URL do obrau</label>
-                        <input type="text" name="img" class="input" disabled>
+                        <input type="text" name="img" class="input" id="img" disabled>
                     </div>
-                    <input type="submit" value="Usuń kurs" class="btn" onsubmit="deleteCourse()">
-                </form>
+                    <input type="submit" value="Usuń kurs" class="btn sub" id="delete">
+                </div>
                 <script>
                     var list = document.getElementsByClassName('toDelete')[0];
                     var nameI = document.getElementsByClassName('input')[2];

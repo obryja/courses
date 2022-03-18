@@ -1,0 +1,27 @@
+var btn = document.getElementsByClassName('sub')[0];
+
+btn.onclick = function(){action()}
+
+function action(){
+    var name = document.getElementById('name').value;
+    var description = document.getElementById('description').value;
+    var category = document.getElementById('category').value;
+    var length = document.getElementById('length').value;
+    var price = document.getElementById('price').value;
+    var img = document.getElementById('img').value;
+    var type = document.getElementsByClassName('sub')[0].id;
+    var choosen = document.getElementById('choosen').value;
+
+    if(type == 'add'){
+        dataFetch('/add_course', {"name": name, "description": description, "category": category, "length": length, "price": price, "img": img});
+        location.reload();
+    }
+    if(type == 'delete'){
+        dataFetch('/delete_course', {"id": choosen})
+        location.reload();
+    }
+    if(type == 'update'){
+        dataFetch('/update_course', {"id": choosen, "name": name, "description": description, "category": category, "length": length, "price": price, "img": img})
+        location.reload();
+    }
+}

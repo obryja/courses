@@ -13,6 +13,20 @@ const coursesServices = require('../services/coursesServices')
  * *********************************************/
 router.post('/add_course', coursesServices.addCourse)
 
+/********** delete course by given @id **********/
+router.post('/delete_course', coursesServices.deleteCourse)
+
+/*************** Updating course ***************
+ * @id : id of course to update
+ * @name : name (optional)
+ * @description : description (optional)
+ * @category : category (optional)
+ * @length : length in hours (optional)
+ * @price : price in PLN (default) (optional)
+ * @img : img url (optional)
+ * *********************************************/
+router.post('/update_course', coursesServices.updateCourse)
+
 /***** returns all courses from database *****/
 router.post('/get_all_courses', coursesServices.getAllCourses)
 

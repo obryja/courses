@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="/js/coursesManagment.js" defer></script>
 </head>
 <body>
     {{> nav}}
@@ -30,18 +31,18 @@
                 </script>
             </div>
             <div class="admin__content">
-                <form class="admin__content__form" method="post">
+                <div class="admin__content__form">
                     <div class="admin__content__form__group">
-                        <label for="name">Nazwa</label>
-                        <input type="text" name="name" class="input" required>
+                        <label for="name">Nazwa*</label>
+                        <input type="text" name="name" class="input" id="name" required>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="description">Opis</label>
-                        <textarea name="description" rows="5" class="input"></textarea>
+                        <textarea name="description" rows="5" class="input" id="description"></textarea>
                     </div>
                     <div class="admin__content__form__group">
-                        <label for="category">Kategoria</label>
-                        <input list="categories" name="category" class="input" required>
+                        <label for="category">Kategoria*</label>
+                        <input list="categories" name="category" class="input" id="category" required>
                         <datalist id="categories">
                             
                         </datalist>
@@ -57,19 +58,19 @@
                         </script>
                     </div>
                     <div class="admin__content__form__group">
-                        <label for="length">Dlugość kursu w godzinach</label>
-                        <input type="number" name="length" class="input" required>
+                        <label for="length">Dlugość kursu w godzinach*</label>
+                        <input type="number" name="length" class="input" id="length" required>
                     </div>
                     <div class="admin__content__form__group">
-                        <label for="price">Cena w zł</label>
-                        <input type="number" name="price" class="input" required>
+                        <label for="price">Cena w zł*</label>
+                        <input type="number" name="price" class="input" id="price" required>
                     </div>
                     <div class="admin__content__form__group">
                         <label for="img">URL do obrau</label>
-                        <input type="text" name="img" class="input">
+                        <input type="text" name="img" class="input" id="img">
                     </div>
-                    <input type="submit" value="Dodaj kurs" class="btn">
-                </form>
+                    <input type="submit" value="Dodaj kurs" class="btn sub" id="add">
+                </div>
             </div>
         </div>
     </div>
