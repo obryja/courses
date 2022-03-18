@@ -61,7 +61,7 @@
                         <label for="img">URL do obrau</label>
                         <input type="text" name="img" class="input" disabled>
                     </div>
-                    <input type="submit" value="Usuń kurs" class="btn">
+                    <input type="submit" value="Usuń kurs" class="btn" onsubmit="deleteCourse()">
                 </form>
                 <script>
                     var list = document.getElementsByClassName('toDelete')[0];
@@ -91,6 +91,12 @@
                                 price.value = data.price;
                                 img.value = data.img;
                             })
+                    }
+
+                    function deleteCourse(){
+                        var option = list.options[list.selectedIndex];
+
+                        authorizedFetch("/delete_course", { "id": "" + option.value + ""});
                     }
                 </script>
             </div>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/nav.css">
     <script src="/js/utils.js"></script>
+    <script src="/js/logout.js" defer></script>
 </head>
 <body>
     <div class="menu">
@@ -33,6 +34,9 @@
             </form>
         </div>
         <div class="menu__login">
+            <script>
+
+            </script>
             <a href="/login">
                 <button class="btn menu__login__btn">Zaloguj się</button>
             </a>
@@ -47,8 +51,8 @@
             <a href="/admin">
                 <button class="btn menu__logged__btn--admin">Panel administratora</button>
             </a>
-            <a href="#">
-                <button class="btn menu__logged__btn">Wyloguj się</button>
+            <a>
+                <button class="btn menu__logged__btn" onclick="logout()">Wyloguj się</button>
             </a>
         </div>
     </div>
