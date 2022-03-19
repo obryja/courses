@@ -6,11 +6,17 @@
 <body>
     {{> nav}}
     <div class="main">
-        <h1>Witaj {{ username }}!</h1>
+        <h1 id="welcome"></h1>
         <h1>Zakupione przez Ciebie kursy :</h1>
         <div class="courses__list">
 
         </div>
+        <script>
+            dataFetch("/get_user")
+                    .then(data => {
+                        document.getElementById('welcome').innerHTML = "Witaj <span class='username'>" + data[0].username + "</span> !";
+                    });
+        </script>
     </div>
 </body>
 </html> 

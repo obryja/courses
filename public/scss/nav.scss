@@ -30,6 +30,7 @@ $font: bahnschrift;
 
     a{
         color: $black;
+        text-decoration: none;
     }
 
     img{
@@ -64,17 +65,7 @@ $font: bahnschrift;
 
         &__btn{
             margin-left: 1vw;
-            //display: none;
-
-            &--user{
-                margin-left: 1vw;
-                //display: none;
-            }
-
-            &--admin{
-                margin-left: 1vw;
-                //display: none;
-            }
+            display: none;
         }
     }
 

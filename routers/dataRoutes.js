@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const coursesServices = require('../services/coursesServices')
+const adminServices = require('../services/adminServices')
 
 /*************** POST methods ***************/
 
@@ -47,5 +48,8 @@ router.post('/delete_course', coursesServices.deleteCourse)
  * @img : img url (optional)
  * *********************************************/
 router.post('/update_course', coursesServices.updateCourse)
+
+/******** returns user from cookies ********/
+ router.post('/get_user', adminServices.getUser)
 
 module.exports = router

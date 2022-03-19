@@ -10,17 +10,18 @@ function action(){
     var price = document.getElementById('price').value;
     var img = document.getElementById('img').value;
     var type = document.getElementsByClassName('sub')[0].id;
-    var choosen = document.getElementById('choosen').value;
 
     if(type == 'add'){
         dataFetch('/add_course', {"name": name, "description": description, "category": category, "length": length, "price": price, "img": img});
         location.reload();
     }
     if(type == 'delete'){
+        var choosen = document.getElementById('choosen').value;
         dataFetch('/delete_course', {"id": choosen})
         location.reload();
     }
     if(type == 'update'){
+        var choosen = document.getElementById('choosen').value;
         dataFetch('/update_course', {"id": choosen, "name": name, "description": description, "category": category, "length": length, "price": price, "img": img})
         location.reload();
     }

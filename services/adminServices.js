@@ -114,9 +114,22 @@ validateRegistration = data => {
     return true
 }
 
+/****** get user by given @username ******/
+
+getUser = async (req, res) => {
+    try{
+        res.status(202).send(JSON.stringify(
+            await User.find({username: req.cookies.userInfo.username}).lean()
+        ))
+    } catch(err){
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     authenticateUser,
     login,
     register,
     verifyRoles,
+    getUser,
 }
