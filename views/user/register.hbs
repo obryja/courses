@@ -13,17 +13,17 @@
             <form method="POST" class="login__form">
                 <div class="login__form__group">
                     <label for="username">Nazwa użytkownika</label>
-                    <input type="text" name="username" class="input" required>
+                    <input type="text" name="username" class="input" id="username" required>
                     <span class="login__form__group__error"></span>
                 </div>
                 <div class="login__form__group">
                     <label for="password">Hasło</label>
-                    <input type="password" name="password" class="input" minlength="6" required>
+                    <input type="password" name="password" class="input" id="password" minlength="6" required>
                     <span class="login__form__group__error"></span>
                 </div>
                 <div class="login__form__group">
                     <label for="password">Powtórz hasło</label>
-                    <input type="password" name="repassword" class="input" minlength="6" required>
+                    <input type="password" name="repassword" class="input" id="repassword" minlength="6" required>
                 </div>
                 <div class="login__form__group">
                     <label for="admin">Typ użytkownika</label>
@@ -32,7 +32,7 @@
                         <option value="admin">Administrator</option>
                     </select>
                 </div>
-                <input type="submit" value="Zarejestruj się" class="btn">
+                <input type="button" value="Zarejestruj się" class="btn sub" id="register">
             </form>
         </div>
     </div>

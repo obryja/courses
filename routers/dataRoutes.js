@@ -3,7 +3,28 @@ const coursesServices = require('../services/coursesServices')
 
 /*************** POST methods ***************/
 
-/*************** Adding course ***************
+/***** returns all courses from database *****/
+router.post('/get_all_courses', coursesServices.getAllCourses)
+
+/********** get course by given @id **********/
+router.post('/get_course', coursesServices.getCourse)
+
+/************** get categories **************/
+router.post('/get_categories', coursesServices.getCategories)
+
+/*** returns courses by given category ********
+ * req.body:
+ * @category : category of courses
+ * *******************************************/
+router.post('/get_courses_by_category', coursesServices.getCoursesByCategory)
+
+/******************* search *******************
+ * req.body:
+ * @search : search
+ * *******************************************/
+ router.post('/search', coursesServices.searchCourses)
+
+ /*************** Adding course ***************
  * @name : name 
  * @description : description
  * @category : category
@@ -26,26 +47,5 @@ router.post('/delete_course', coursesServices.deleteCourse)
  * @img : img url (optional)
  * *********************************************/
 router.post('/update_course', coursesServices.updateCourse)
-
-/***** returns all courses from database *****/
-router.post('/get_all_courses', coursesServices.getAllCourses)
-
-/********** get course by given @id **********/
-router.post('/get_course', coursesServices.getCourse)
-
-/************** get categories **************/
-router.post('/get_categories', coursesServices.getCategories)
-
-/*** returns courses by given category ********
- * req.body:
- * @category : category of courses
- * *******************************************/
-router.post('/get_courses_by_category', coursesServices.getCoursesByCategory)
-
-/******************* search *******************
- * req.body:
- * @search : search
- * *******************************************/
- router.post('/search', coursesServices.searchCourses)
 
 module.exports = router

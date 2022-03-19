@@ -24,8 +24,8 @@ const userSchema = new Schema({
         type: String, 
         require: true
     },
-    type: {
-        type: String,
+    role: {
+        type: String, 
         require: true
     },
     courses: [{courseId: String}]
