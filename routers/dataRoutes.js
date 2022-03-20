@@ -52,7 +52,9 @@ router.post('/update_course', coursesServices.updateCourse)
 /******** returns user from cookies ********/
 router.post('/get_user', adminServices.getUser)
 
-/****************** purchase ****************/
+/****************** purchase ****************
+ * "courseId": "{{ courseId }}"
+ * ******************************************/
 router.post('/purchase', adminServices.purchase)
 
 module.exports = router
