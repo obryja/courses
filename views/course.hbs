@@ -17,7 +17,9 @@
                 <img class="course__purchase__img" alt="zdjęcie kursu">
                 <p class="course__purchase__length"></p>
                 <p class="course__purchase__price"></p>
-                <input class="btn course__purchase__btn" type="submit" value="Kup teraz">
+                <input class="btn course__purchase__btn" type="button" id="sub" value="Kup teraz" onclick="action()">
+                <p id="info">Aby kupić kurs zaloguj się na konto użytkownika</p>
+                <p id="infoU">Już posiadasz ten kurs</p>
             </div>
             <script>
                 var category = document.getElementsByClassName('course__details__category')[0];
@@ -38,6 +40,34 @@
                     length.innerHTML = "Długość kursu: <span>" + data.length + " h</span>";
                     price.innerHTML = "Cena kursu: <span>" + data.price + " zł</span>";
                     })
+
+                 dataFetch("/get_user")
+                    .then(data => {
+                        if (data[0].role == 'user'){
+                            document.getElementById('info').style.display = 'none';
+                            if(data[0].courses.includes("{{ courseId }}")){
+                                document.getElementById('infoU').style.display = 'inline';
+                                document.getElementsByClassName('btn course__purchase__btn')[0].style.display = 'none';
+                            }else{
+                                document.getElementsByClassName('btn course__purchase__btn')[0].style.display = 'inline';
+                                document.getElementById('infoU').style.display = 'none';
+                            }
+                        }
+                        else {
+                            document.getElementsByClassName('btn course__purchase__btn')[0].style.display = 'none';
+                            document.getElementById('info').style.display = 'inline';
+                            document.getElementById('infoU').style.display = 'none';
+                        }
+                    }, reason => {
+                        document.getElementsByClassName('btn course__purchase__btn')[0].style.display = 'none';
+                        document.getElementById('info').style.display = 'inline';
+                        document.getElementById('infoU').style.display = 'none';
+                    });
+
+                function action(){
+                    dataFetch("/purchase", { "courseId": "{{ courseId }}" })
+                    location.reload();
+                }
             </script>
         </div>
     </div>

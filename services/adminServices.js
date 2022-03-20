@@ -126,10 +126,34 @@ getUser = async (req, res) => {
     }
 }
 
+/****************** purchase ******************/
+
+purchase = async (req, res) => {
+    try{
+        if(!req.cookies.userInfo.username)    return res.sendStatus(403)
+        if(!req.body.courseId)    return res.sendStatus(403)
+
+        // try to find user with given username
+        const user = await User.updateOne(
+            {username: req.cookies.userInfo.username},
+            {$addToSet: {courses: req.body.courseId}}
+        )
+
+        if(!user)  return res.sendStatus(404)
+
+        //await user.save()
+
+        res.status(202).send(JSON.stringify(user))
+    } catch(err) {
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     authenticateUser,
     login,
     register,
     verifyRoles,
     getUser,
+    purchase,
 }

@@ -50,6 +50,9 @@ router.post('/delete_course', coursesServices.deleteCourse)
 router.post('/update_course', coursesServices.updateCourse)
 
 /******** returns user from cookies ********/
- router.post('/get_user', adminServices.getUser)
+router.post('/get_user', adminServices.getUser)
+
+/****************** purchase ****************/
+router.post('/purchase', adminServices.purchase)
 
 module.exports = router

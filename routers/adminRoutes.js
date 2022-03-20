@@ -38,8 +38,8 @@ router.get("/register", async(req, res) => {
 })
 
 /******************** user ********************/
-router.get('/user/:username', tokenServices.checkLogged, services.verifyRoles(ROLES_LIST.user), (req, res) => {
-    res.render('user/user', {title: 'Twoje kursy', username: req.params.username})
+router.get('/user/:userId', tokenServices.checkLogged, services.verifyRoles(ROLES_LIST.user), (req, res) => {
+    res.render('user/user', {title: 'Twoje kursy', userId: req.params.userId})
 })
 
 /******************* admin *******************/

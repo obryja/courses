@@ -28,7 +28,7 @@ const userSchema = new Schema({
         type: String, 
         require: true
     },
-    courses: [{courseId: String}]
+    courses: [ObjectId]
 }, {
     versionKey: false
 })
