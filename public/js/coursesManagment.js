@@ -1,3 +1,8 @@
+//style
+document.getElementsByClassName('admin__nav__a')[0].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+document.getElementsByClassName('admin__nav__a')[1].style.borderRight = '1px solid rgba(0,0,0,0.25)';
+
+// action
 var btn = document.getElementsByClassName('sub')[0];
 
 btn.onclick = function(){action()}
