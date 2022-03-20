@@ -7,6 +7,7 @@ const RefreshToken = require('../db/schemas').RefreshToken
 const tokenServices = require("./tokenServices")
 
 /**** checks if data is compatible with user in db ****/
+
 authenticateUser = async (req, res, next) => {
     try {
         if (!req.body.username) return res.sendStatus(400)
@@ -60,6 +61,7 @@ login = async (req, res) => {
 }
 
 /****** check data and add new user to db with data ******/
+
 register = async (req, res, next) => {
     try {
         if (!req.body.username || !req.body.password || !req.body.role) return res.sendStatus(401)
