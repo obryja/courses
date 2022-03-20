@@ -24,19 +24,31 @@ const userSchema = new Schema({
         type: String, 
         require: true
     },
-    admin: {
-        type: Boolean,
+    role: {
+        type: String, 
         require: true
     },
-    courses: [{courseId: String}]
+    courses: [ObjectId]
+}, {
+    versionKey: false
+})
+
+const refreshTokenSchema = new mongoose.Schema({
+    token: {
+        type: String,
+        require: true,
+        unique: true
+    }
 }, {
     versionKey: false
 })
 
 const Course = new mongoose.model('Course', courseSchema)
 const User = new mongoose.model('User', userSchema)
+const RefreshToken = new mongoose.model("RefreshToken", refreshTokenSchema)
 
 module.exports = {
     Course,
     User,
+    RefreshToken,
 }

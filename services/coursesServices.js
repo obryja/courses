@@ -1,5 +1,4 @@
 const async = require('hbs/lib/async')
-
 const Course = require('../db/schemas').Course
 
 /***** all saved courses from database *****/
@@ -69,11 +68,11 @@ searchCourses = async (req, res) => {
     }
 }
 
-/*************** adding data ***************/
+/************** adding course **************/
 
 addCourse = async(req, res) => {
     try{
-        if(!req.body.name || !req.body.category || !req.body.length || !req.body.price || !req.body.img){
+        if(!req.body.name || !req.body.category || !req.body.length || !req.body.price){
             return res.sendStatus(400)
         } else{
             const course = new Course({
@@ -95,11 +94,57 @@ addCourse = async(req, res) => {
     }
 }
 
+/************* deleting course *************/
+
+deleteCourse = async (req, res) => {
+    try {
+        if(!req.body.id)  return res.sendStatus(403)
+
+        Course.deleteOne({_id: req.body.id}, err => {
+            if(err) return res.sendStatus(400)
+            
+            res.sendStatus(202)
+        })
+    } catch(err) {
+        res.sendStatus(500)
+        console.log(err) 
+    }
+}
+
+/************* update course *************/
+
+updateCourse = async (req, res) => {
+    try {
+        if(!req.body.id)    return res.sendStatus(403)
+
+        // try to find course with given id in database
+        const course = await Course.findById(req.body.id)
+        if(!course)  return res.sendStatus(404)
+
+        // if one of the given data is falsy, corresponding value won't change
+        course.name = req.body.name || course.name
+        course.description = req.body.description || course.description
+        course.category = req.body.category || course.category
+        course.length = req.body.length || course.length
+        course.price = req.body.price || course.price
+        course.img = req.body.img || course.img
+
+        await course.save()
+
+        res.status(202).send(JSON.stringify(course))
+    } catch(err) {
+        res.sendStatus(500)
+        console.log(err) 
+    }
+}
+
 module.exports = {
-    addCourse,
     getAllCourses,
     getCourse,
     getCategories,
     getCoursesByCategory,
     searchCourses,
+    addCourse,
+    deleteCourse,
+    updateCourse,
 }

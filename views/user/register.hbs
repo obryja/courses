@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="/js/register.js" defer></script>
 </head>
 <body>
     {{> nav}}
@@ -9,27 +10,29 @@
         <div class="login">
             <h2>{{ title }}</h2>
             <hr>
-            <form method="POST" action="#" class="login__form">
+            <form method="POST" class="login__form">
                 <div class="login__form__group">
                     <label for="username">Nazwa użytkownika</label>
-                    <input type="text" name="username" class="input" required>
+                    <input type="text" name="username" class="input" id="username" required>
+                    <span class="login__form__group__error"></span>
                 </div>
                 <div class="login__form__group">
                     <label for="password">Hasło</label>
-                    <input type="password" name="password" class="input" required>
+                    <input type="password" name="password" class="input" id="password" minlength="6" required>
+                    <span class="login__form__group__error"></span>
                 </div>
                 <div class="login__form__group">
                     <label for="password">Powtórz hasło</label>
-                    <input type="password" name="repassword" class="input" required>
+                    <input type="password" name="repassword" class="input" id="repassword" minlength="6" required>
                 </div>
                 <div class="login__form__group">
                     <label for="admin">Typ użytkownika</label>
-                    <select name="admin" id="admin" class="input" required>
-                        <option value="false">Użytkownik</option>
-                        <option value="true">Administrator</option>
+                    <select name="admin" id="role" class="input" required>
+                        <option value="user">Użytkownik</option>
+                        <option value="admin">Administrator</option>
                     </select>
                 </div>
-                <input type="submit" value="Zarejestruj się" class="btn">
+                <input type="submit" value="Zarejestruj się" class="btn sub" id="register">
             </form>
         </div>
     </div>
