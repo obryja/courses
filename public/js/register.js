@@ -5,7 +5,7 @@ form.addEventListener("submit", e => {
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    var role = document.getElementById('admin').value;
+    var role = document.getElementById('role').value;
     
     if(!validateRegistration())     return
 
